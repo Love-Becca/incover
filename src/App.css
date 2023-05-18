@@ -1,38 +1,126 @@
-.App {
+.records-table-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.records-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.records-table th,
+.records-table td {
+  padding: 15px;
+  text-align: left;
+}
+
+.records-table th {
+  background-color: #f2f2f2;
+}
+
+.records-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.records-table tbody tr:hover {
+  background-color: #f5f5f5;
+}
+
+.records-table caption {
+  margin-bottom: 10px;
+  font-weight: bold;
+  font-size: 18px;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.records-table td button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.records-table td button:hover {
+  background-color: #0056b3;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.records-table-container .registered-vehicle-info {
+  margin-top: 20px;
+}
+
+.records-table-container .registered-vehicle-info h2 {
+  margin-bottom: 10px;
+  font-size: 24px;
+  color: #333;
+}
+
+.records-table-container .vehicle-image {
+  display: block;
+  margin-bottom: 10px;
+  max-width: 100%;
+}
+
+.pagination-section {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.page-size-select {
+  margin-bottom: 10px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.page-buttons {
+  margin-left: 20px;
+}
+
+.pagination-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  margin-right: 10px;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.pagination-button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.pagination-button:not(:disabled):hover {
+  background-color: #0056b3;
+}
+
+@media screen and (max-width: 600px) {
+  .records-table th,
+  .records-table td {
+    padding: 12px;
   }
-  to {
-    transform: rotate(360deg);
+
+  .pagination-section {
+    flex-direction: column;
+  }
+
+  .page-size-select {
+    margin-bottom: 10px;
+  }
+
+  .page-buttons {
+    margin-left: 0;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
   }
 }

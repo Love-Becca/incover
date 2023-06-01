@@ -11,3 +11,17 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/* Add the following CSS to the existing styles */
+
+body {
+  overflow: scroll;
+}
+
+/* Hide the webkit scrollbar */
+body::-webkit-scrollbar {
+  width: 0;
+  background-color: #f5f5f5;
+}
+
+

@@ -23,14 +23,14 @@ const Footer = () => {
                     <p>Framework by Uisual</p>
                     <p>Powered By Open Block EI</p>
                 </div>
-                <div className="footer-links">
-                    <a href="#">About</a>
+                <div className="footer-links" id='foot'>
+                    <a href="#foot">About</a>
                     <span>|</span>
-                    <a href="#">Terms</a>
+                    <a href="#foot">Terms</a>
                     <span>|</span>
-                    <a href="#">Privacy Policy</a>
+                    <a href="#foot">Privacy Policy</a>
                     <span>|</span>
-                    <a href="#">Cookie Policy</a>
+                    <a href="#foot">Cookie Policy</a>
                 </div>
             </footer>
         </>

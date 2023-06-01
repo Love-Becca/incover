@@ -1,4 +1,3 @@
-// import RecordsTable from "./Registered";
 import LandingPage from './LandingPage';
 import Header from './Header';
 import { ToastContainer } from 'react-toastify';

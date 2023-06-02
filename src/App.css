@@ -303,4 +303,9 @@ footer p {
     height: 20px;
     margin-left: 5px;
   }
+
+  input{
+    width: 85vw;
+  }
 }
+

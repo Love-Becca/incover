@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import MetaMaskSDK from '@metamask/sdk';
+// import MetaMaskSDK from '@metamask/sdk';
 import detectEthereumProvider from '@metamask/detect-provider'
 import './App.css';
 
-const options = {
-    injectProvider: false,
-    communicationLayerPreference: 'webrtc',
-    checkInstallationOnAllCalls: true,
-};
+// const options = {
+//     injectProvider: false,
+//     communicationLayerPreference: 'webrtc',
+//     checkInstallationOnAllCalls: true,
+// };
 
-const MMSDK = new MetaMaskSDK(options);
-
+// const MMSDK = new MetaMaskSDK(options);
+// const ethereum = MMSDK.getProvider();
 const LandingPage = () => {
     const [email, setEmail] = useState('');
     const [errorMessage, setErrorMessage] = useState('');

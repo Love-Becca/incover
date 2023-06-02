@@ -261,6 +261,9 @@ footer p {
 }
 
 @media screen and (max-width: 768px) {
+  .body{
+    padding: 0px 30px;
+  }
   .logo {
     flex-direction: row;
     align-items: center;

@@ -1,7 +1,15 @@
 import React, { useState } from 'react';
-
+import MetaMaskSDK from '@metamask/sdk';
 import './App.css';
 
+const options = {
+    injectProvider: false,
+    communicationLayerPreference: 'webrtc',
+    checkInstallationOnAllCalls: true,
+};
+
+const MMSDK = new MetaMaskSDK(options);
+const ethereum = MMSDK.getProvider();
 const LandingPage = () => {
     const [email, setEmail] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
@@ -22,6 +30,10 @@ const LandingPage = () => {
         return pattern.test(email);
     };
 
+    const handleConnect = ()=>{
+        ethereum.request({ method: 'eth_requestAccounts', params: [] });
+    }
+
     return (
         <section className='body'>
             <h3>Connect Web 3 to view the latest jobs!!</h3>
@@ -40,7 +52,7 @@ const LandingPage = () => {
                             <path d="M25,2C12.297,2,2,12.297,2,25s10.297,23,23,23s23-10.297,23-23S37.703,2,25,2z M25,11c1.657,0,3,1.343,3,3s-1.343,3-3,3 s-3-1.343-3-3S23.343,11,25,11z M29,38h-2h-4h-2v-2h2V23h-2v-2h2h4v2v13h2V38z"></path>
                         </svg>
                     </a>
-                    <button>Click to connect Metamask</button>
+                    <button onClick={handleConnect}>Click to connect Metamask</button>
                 </div>
                 <p>
                     Need Crypto? <span>TEST NET USE FAUCET!!</span>

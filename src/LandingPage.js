@@ -10,7 +10,7 @@ const options = {
 };
 
 const MMSDK = new MetaMaskSDK(options);
-const ethereum = MMSDK.getProvider();
+
 const LandingPage = () => {
     const [email, setEmail] = useState('');
     const [errorMessage, setErrorMessage] = useState('');

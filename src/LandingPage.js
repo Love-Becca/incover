@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import MetaMaskSDK from '@metamask/sdk';
+import detectEthereumProvider from '@metamask/detect-provider'
 import './App.css';
 
 const options = {
@@ -13,6 +14,30 @@ const ethereum = MMSDK.getProvider();
 const LandingPage = () => {
     const [email, setEmail] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
+
+    const [hasProvider, setHasProvider] = useState(null)
+    const initialState = { accounts: [] }               /* New */
+    const [wallet, setWallet] = useState(initialState)  /* New */
+
+    useEffect(() => {
+        const getProvider = async () => {
+            const provider = await detectEthereumProvider({ silent: true })
+            setHasProvider(Boolean(provider))
+        }
+
+        getProvider()
+    }, [])
+
+    const updateWallet = async (accounts) => {     /* New */
+        setWallet({ accounts })                          /* New */
+    }                                                  /* New */
+
+    const handleConnect = async () => {                /* New */
+        let accounts = await window.ethereum.request({   /* New */
+            method: "eth_requestAccounts",                 /* New */
+        })                                               /* New */
+        updateWallet(accounts)                           /* New */
+    }
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -30,9 +55,9 @@ const LandingPage = () => {
         return pattern.test(email);
     };
 
-    const handleConnect = ()=>{
-        ethereum.request({ method: 'eth_requestAccounts', params: [] });
-    }
+    // const handleConnect = () => {
+    //     ethereum.request({ method: 'eth_requestAccounts', params: [] });
+    // }
 
     return (
         <section className='body'>
@@ -52,11 +77,15 @@ const LandingPage = () => {
                             <path d="M25,2C12.297,2,2,12.297,2,25s10.297,23,23,23s23-10.297,23-23S37.703,2,25,2z M25,11c1.657,0,3,1.343,3,3s-1.343,3-3,3 s-3-1.343-3-3S23.343,11,25,11z M29,38h-2h-4h-2v-2h2V23h-2v-2h2h4v2v13h2V38z"></path>
                         </svg>
                     </a>
-                    <button onClick={handleConnect}>Click to connect Metamask</button>
+                    {hasProvider && <button onClick={handleConnect}>Click to connect Metamask</button>}
                 </div>
+                <div>Injected Provider {hasProvider ? 'DOES' : 'DOES NOT'} Exist</div>
                 <p>
                     Need Crypto? <span>TEST NET USE FAUCET!!</span>
                 </p>
+                {wallet.accounts.length > 0 &&                /* New */
+                    <div>Wallet Accounts: {wallet.accounts[0]}</div>
+                }
             </div>
             <section className='newsletter'>
                 <h2>Ready to start?</h2>

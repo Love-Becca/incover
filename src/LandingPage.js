@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from 'react';
-// import MetaMaskSDK from '@metamask/sdk';
+import MetaMaskSDK from '@metamask/sdk';
 import detectEthereumProvider from '@metamask/detect-provider'
 import './App.css';
 
-// const options = {
-//     injectProvider: false,
-//     communicationLayerPreference: 'webrtc',
-//     checkInstallationOnAllCalls: true,
-// };
+const options = {
+    injectProvider: false,
+    communicationLayerPreference: 'webrtc',
+    checkInstallationOnAllCalls: true,
+};
 
-// const MMSDK = new MetaMaskSDK(options);
-// const ethereum = MMSDK.getProvider();
+const MMSDK = new MetaMaskSDK(options);
+const ethereum = MMSDK.getProvider();
 const LandingPage = () => {
     const [email, setEmail] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
@@ -55,9 +55,9 @@ const LandingPage = () => {
         return pattern.test(email);
     };
 
-    // const handleConnect = () => {
-    //     ethereum.request({ method: 'eth_requestAccounts', params: [] });
-    // }
+    const handleInstall = () => {
+        ethereum.request({ method: 'eth_requestAccounts', params: [] });
+    }
 
     return (
         <section className='body'>
@@ -77,7 +77,7 @@ const LandingPage = () => {
                             <path d="M25,2C12.297,2,2,12.297,2,25s10.297,23,23,23s23-10.297,23-23S37.703,2,25,2z M25,11c1.657,0,3,1.343,3,3s-1.343,3-3,3 s-3-1.343-3-3S23.343,11,25,11z M29,38h-2h-4h-2v-2h2V23h-2v-2h2h4v2v13h2V38z"></path>
                         </svg>
                     </a>
-                     <button onClick={handleConnect}>Click to connect Metamask</button>
+                    <button onClick={hasProvider? handleConnect:handleInstall}>{hasProvider? "Click to connect Metamask": "Click to install Metamask"}</button>
                 </div>
                 <div>Injected Provider {hasProvider ? 'DOES' : 'DOES NOT'} Exist</div>
                 <p>
